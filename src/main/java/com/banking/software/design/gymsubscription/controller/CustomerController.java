@@ -22,12 +22,12 @@ public class CustomerController {
         return customerService.signup(username, password, name);
     }
 
-    @RequestMapping(value = MappingPaths.CUSTOMER_LOGIN)
+    @RequestMapping(value = MappingPaths.CUSTOMER_LOGIN, method = RequestMethod.POST)
     public ResponseEntity<?> login(@RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
         return customerService.login(username, password);
     }
 
-    @RequestMapping(value = MappingPaths.CUSTOMER_LOGOUT)
+    @RequestMapping(value = MappingPaths.CUSTOMER_LOGOUT, method = RequestMethod.POST)
     public ResponseEntity<?> logout(@RequestParam(name = "username") String username, @RequestParam(name = "accessToken") String accessToken) {
         return customerService.logout(username, accessToken);
     }
