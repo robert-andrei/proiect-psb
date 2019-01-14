@@ -23,9 +23,6 @@ public class CustomerService {
     @Autowired
     private LoginSessionRepository loginSessionRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     public ResponseEntity signup(String username, String password, String name) {
         Optional<Customer> customerFromDb = customerRepository.findById(username);
 
