@@ -3,6 +3,7 @@ package com.banking.software.design.gymsubscription.model.dto;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Objects;
 
 public class ClassDateDTO {
 
@@ -48,5 +49,22 @@ public class ClassDateDTO {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        ClassDateDTO that = (ClassDateDTO) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(date, that.date) && Objects.equals(time, that.time);
+    }
+
+    @Override public int hashCode() {
+        return Objects.hash(id, name, date, time);
+    }
+
+    @Override public String toString() {
+        return "ClassDateDTO{" + "id=" + id + ", name='" + name + '\'' + ", date=" + date + ", time=" + time + '}';
     }
 }
