@@ -76,8 +76,6 @@ public class ClassesService {
     }
 
     public ResponseEntity bookClass(String username, String accessToken, Long timetableId) {
-//        Optional<List<Timetable>> classesOnDate = timetableRepository.getDateForClass(classname);
-
         if (!sessionIsOk(username, accessToken)) {
             return new ResponseEntity(HttpStatus.UNAUTHORIZED);
         }
@@ -88,16 +86,14 @@ public class ClassesService {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
 
+        Optional<Booking> bookingFromDb = bookingRepository.getBookingByCustomerAndTimetable(customer.get(), timetable.get());
+        if (bookingFromDb.isPresent()) {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
         customer.get().addBooking(new Booking(customer.get(), timetable.get()));
         customerRepository.save(customer.get());
 
         return new ResponseEntity(HttpStatus.CREATED);
-//        if (!classesOnDate.isPresent() || classesOnDate.get().isEmpty()) {
-//            return ResponseEntity.noContent().build();
-//        }
-//
-//        return ResponseEntity.ok(classesOnDate.get().stream()
-//                .map(timetable -> new DateForClassDTO(timetable.getId(), timetable.getDateAndTime(), timetable.getDateAndTime())));
     }
 
     public ResponseEntity getClassDetails(String username, String accessToken, String classname) {

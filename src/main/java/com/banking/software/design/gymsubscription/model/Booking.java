@@ -9,9 +9,8 @@ import java.util.Objects;
 public class Booking implements Serializable {
 
     @Id
-    @Column(columnDefinition = "bigserial", name = "id", updatable = false, nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "edge_id_generator")
-    protected Long id;
+    @Column(name = "id", updatable = false, nullable = false)
+    protected String id;
 
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinColumn(name = "customer")
@@ -25,15 +24,16 @@ public class Booking implements Serializable {
     }
 
     public Booking(Customer customer, Timetable timetable) {
+        this.id = customer.getUsername() + timetable.getId();
         this.customer = customer;
         this.timetable = timetable;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

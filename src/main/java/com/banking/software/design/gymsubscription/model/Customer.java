@@ -59,6 +59,22 @@ public class Customer {
         this.bookings.add(booking);
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Set<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(Set<Booking> bookings) {
+        this.bookings = bookings;
+    }
+
     @Override public boolean equals(Object o) {
         if (this == o)
             return true;
