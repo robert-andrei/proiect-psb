@@ -10,7 +10,7 @@ public class Booking implements Serializable {
 
     @Id
     @Column(columnDefinition = "bigserial", name = "id", updatable = false, nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "edge_id_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "edge_id_generator")
     protected Long id;
 
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })

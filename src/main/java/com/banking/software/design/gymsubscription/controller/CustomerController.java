@@ -4,11 +4,9 @@ import com.banking.software.design.gymsubscription.service.CustomerService;
 import com.banking.software.design.gymsubscription.util.MappingPaths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+//@CrossOrigin(origins = "http://localhost:8080/index.html")
 @RestController
 @RequestMapping(MappingPaths.CUSTOMER_PATH)
 public class CustomerController {

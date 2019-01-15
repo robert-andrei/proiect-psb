@@ -25,5 +25,4 @@ public class CustomSecurityConfig extends WebSecurityConfigurerAdapter {
 //        // IT'S REQUIRED TO PREVENT SPRING BOOT AUTO-CONFIGURATION
 //        return super.authenticationManagerBean();
 //    }
-
 }

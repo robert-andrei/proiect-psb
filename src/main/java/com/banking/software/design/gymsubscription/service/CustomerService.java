@@ -41,6 +41,12 @@ public class CustomerService {
         if (!customerFromDb.isPresent()) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
+
+        Optional<LoginSession> loginSessionFromDb = loginSessionRepository.findById(username);
+        if (loginSessionFromDb.isPresent()) {
+            return new ResponseEntity(HttpStatus.CONFLICT);
+        }
+
         if (new BCryptPasswordEncoder().matches(password, customerFromDb.get().getPassword())) {
 
             String accessToken = new TokenGenerator().randomString(32);
