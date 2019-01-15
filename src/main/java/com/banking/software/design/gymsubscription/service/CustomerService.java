@@ -42,10 +42,10 @@ public class CustomerService {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
 
-        Optional<LoginSession> loginSessionFromDb = loginSessionRepository.findById(username);
-        if (loginSessionFromDb.isPresent()) {
-            return new ResponseEntity(HttpStatus.CONFLICT);
-        }
+//        Optional<LoginSession> loginSessionFromDb = loginSessionRepository.findById(username);
+//        if (loginSessionFromDb.isPresent()) {
+//            return new ResponseEntity(HttpStatus.CONFLICT);
+//        }
 
         if (new BCryptPasswordEncoder().matches(password, customerFromDb.get().getPassword())) {
 

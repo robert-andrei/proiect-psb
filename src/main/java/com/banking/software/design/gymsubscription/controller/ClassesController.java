@@ -14,13 +14,13 @@ public class ClassesController {
     @Autowired
     private ClassesService classesService;
 
-    @RequestMapping(value = MappingPaths.CLASSES_NAMES, method = RequestMethod.GET)
+    @RequestMapping(value = MappingPaths.CLASSES_NAMES, method = RequestMethod.POST)
     public ResponseEntity getAllClassnames(@RequestParam("username") String username, @RequestParam("accessToken") String accessToken) {
 
         return classesService.getAllClassnames(username, accessToken);
     }
 
-    @RequestMapping(value = MappingPaths.CLASSES_TIMETABLE, method = RequestMethod.GET)
+    @RequestMapping(value = MappingPaths.CLASSES_TIMETABLE, method = RequestMethod.POST)
     public ResponseEntity getClassesOnDate(@RequestParam("username") String username, @RequestParam("accessToken") String accessToken,
             @RequestParam("date") String date) {
 
@@ -31,9 +31,9 @@ public class ClassesController {
         return classesService.getClassesOnDate(username, accessToken, date);
     }
 
-    @RequestMapping(value = MappingPaths.CLASSES_DATE, method = RequestMethod.GET)
+    @RequestMapping(value = MappingPaths.CLASSES_DATE, method = RequestMethod.POST)
     public ResponseEntity getDateForClass(@RequestParam("username") String username, @RequestParam("accessToken") String accessToken,
-            @RequestParam("classname") String classname) {
+            @RequestParam("name") String classname) {
 
         return classesService.getDateForClass(username, accessToken, classname);
     }
@@ -44,13 +44,13 @@ public class ClassesController {
         return classesService.bookClass(username, accessToken, id);
     }
 
-    @RequestMapping(value = MappingPaths.CLASSES_DETAILS, method = RequestMethod.GET)
-    public ResponseEntity getClassDetails(@RequestParam("username") String username, @RequestParam("accessToken") String accessToken, @RequestParam("classname") String classname) {
+    @RequestMapping(value = MappingPaths.CLASSES_DETAILS, method = RequestMethod.POST)
+    public ResponseEntity getClassDetails(@RequestParam("username") String username, @RequestParam("accessToken") String accessToken, @RequestParam("name") String classname) {
 
         return classesService.getClassDetails(username, accessToken, classname);
     }
 
-    @RequestMapping(value = MappingPaths.CLASSES_BOOKINGS, method = RequestMethod.GET)
+    @RequestMapping(value = MappingPaths.CLASSES_BOOKINGS, method = RequestMethod.POST)
     public ResponseEntity getBookings(@RequestParam("username") String username, @RequestParam("accessToken") String accessToken) {
 
         return classesService.getBookings(username, accessToken);
