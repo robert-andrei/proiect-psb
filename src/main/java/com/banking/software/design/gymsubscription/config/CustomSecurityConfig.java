@@ -16,7 +16,6 @@ public class CustomSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().antMatchers("/").permitAll();
         http.csrf().disable();
-//        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
     }
 
 //    @Bean

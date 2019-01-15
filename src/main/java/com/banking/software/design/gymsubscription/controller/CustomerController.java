@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-//@CrossOrigin(origins = "http://localhost:8080/index.html")
 @RestController
 @RequestMapping(MappingPaths.CUSTOMER_PATH)
 public class CustomerController {
