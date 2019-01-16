@@ -1,22 +1,28 @@
 package com.banking.software.design.gymsubscription.model;
 
 import com.banking.software.design.gymsubscription.util.Difficulty;
+import org.hibernate.annotations.Check;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "classes")
+@Check(constraints = "difficulty >= 0 AND difficulty <= 5")
 public class Classes {
 
     @Id
-    @Column(name = "class_name", updatable = false, nullable = false)
+    @Column(name = "class_name", updatable = false, nullable = false, length = 25)
+    @Length(max = 25)
     private String className;
 
-    @Column(name = "coach_name")
+    @Column(name = "coach_name", length = 40)
+    @Length(max = 40)
     private String coachName;
 
-    @Column(name = "description")
+    @Column(name = "description", length = 100)
+    @Length(max = 100)
     private String description;
 
     @Column(name = "difficulty")

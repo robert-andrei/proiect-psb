@@ -1,5 +1,7 @@
 package com.banking.software.design.gymsubscription.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -8,7 +10,8 @@ import java.util.Objects;
 public class LoginSession {
 
     @Id
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, length = 30)
+    @Length(min = 5, max = 30)
     private String username;
 
     @Column(name = "token")

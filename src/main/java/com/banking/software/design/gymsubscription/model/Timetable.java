@@ -1,6 +1,7 @@
 package com.banking.software.design.gymsubscription.model;
 
 import com.banking.software.design.gymsubscription.util.LocalDateTimeConverter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,7 +18,8 @@ public class Timetable {
     @Column(name = "timetable_id", updatable = false, nullable = false)
     private Long timetableId;
 
-    @Column(name = "class_name", nullable = false)
+    @Column(name = "class_name", nullable = false, length = 25)
+    @Length(max = 25)
     private String className;
 
     @Column(name = "date_and_time")

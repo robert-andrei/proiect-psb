@@ -1,5 +1,7 @@
 package com.banking.software.design.gymsubscription.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -10,13 +12,16 @@ import java.util.Set;
 public class Customer {
 
     @Id
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, length = 30)
+    @Length(min = 5, max = 30)
     private String username;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "password", nullable = false, length = 32)
+    @Length(min = 5, max = 32)
     private String password;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 50)
+    @Length(max = 50)
     private String name;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
